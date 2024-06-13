@@ -92,6 +92,11 @@ form>p{
     outline: 1px solid var(--blue);
 }
 
+.alert{
+    border: 1px solid red;
+    background-color: #ff68a2;
+}
+
 #checkbox_remember{
     margin-top: 0.8vw;
     display: flex;
