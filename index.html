@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/style.css">
+    <title>Demo-version</title>
+</head>
+<body>
+    <div class="wrapper">
+        
+        <main>
+            <!--Форма авторизации-->
+            <div id="main--form">
+            <form method="post">
+                <svg  viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="52" height="52" rx="10" fill="white"/>
+                    <path d="M32 20L20 32" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M20 20L32 32" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <p>Войти в систему</p>
+                <input class="form_input" type="text" name="mail-phone" placeholder="Email/Телефон">
+                <input class="form_input" type="password" name="password" placeholder="Пароль">
+                    <label id="checkbox_remember">
+                        <input type="checkbox" name="remember" id="remember" value="remember">
+                        <span id="checkbox_remember_icon"></span>
+                        
+                        <span>Запомнить пароль</span>
+                        
+                    </label>
+                <a href="#" id="recover_link">Восстановить</a>
+                <button id="button_enter">Войти</button>
+                <button id="button_registration">Зарегестрироваться</button>
+            </form>
+            </div>
+            <!---->
+
+            <!--Блок текст и вход в систему-->
+            <div id="main--tilte_authorization">
+                <h1>Демо-версия</h1>
+                <p>За 18 лет деятельности было реализовано более 500 крупных, 
+                    а так же, не менее 2500 средних и малых проектов. Используя 
+                    знания и накопленный опыт мы можем предложить 
+                </p>
+                <button id="main--tilte_authorization--try_free" name="try_free">
+                    <span>Попробовать бесплатно</span>
+                    <span>
+                        <svg viewBox="0 0 44 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="44" height="44" rx="22" fill="white"/>
+                            <rect x="4" y="4" width="36" height="36" rx="18" fill="white"/>
+                            <path d="M17 17H27V27" stroke="#1F4284" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17 27L27 17" stroke="#1F4284" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+            <!---->
+
+            <!--Блок баннер-->
+            <div id="main--banner">
+
+            </div>
+
+
+            <!---->
+        </main>
+
+    </div>
+    <script href="./script.js"></script>
+</body>
+</html>
