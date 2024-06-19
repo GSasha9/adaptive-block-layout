@@ -25,20 +25,33 @@ main{
     position: relative;
 }
 
-#main--form{
-    width: 100%;
-    position: absolute;
-    justify-content: center;
-    background-color: rgba(66, 74, 92, 0.74);
-    
-}
 
-#main--form{
+
+.modal{
+    position: fixed;
+    inset:0;
+    background-color: rgba(0,0,0, 0.5);
+    display: flex;
+    padding: 30px;
+    overflow-y: auto;
     visibility: hidden;
 }
 
+.modal--active{
+    visibility: visible;
+    transition: 1s ease;
+}
+
+.main--form{
+    margin: auto;
+}
+
+.hidden{
+    overflow: hidden;
+}
+
 form {
-    margin: 0 auto;
+    margin: auto;
     display: flex;
     flex-direction: column;
     width: 24.74vw;
@@ -119,6 +132,7 @@ form>p{
     background-color: #fff;
     border-radius: 4px;
     margin-right: 1vw;
+    cursor: pointer;
 }
 
 #checkbox_remember_icon+span{
@@ -179,11 +193,11 @@ form>button{
 #main--tilte_authorization{
     width: 48.44vw;
     padding-left: 3vw;
+    padding-top: 4vw;
     border-radius: 10px;
 }
 
 h1{
-    margin-top: 5vw;
     color: var(--blue);
     font-size: 1.56vw;
     margin-bottom: 1.3vw;
@@ -238,9 +252,12 @@ h1{
     background-image: url(../img/banner1440px.png);
     background-size: cover;
     background-position-y: -4.17vw;
-    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
+
+
+
 
 
 
@@ -253,12 +270,12 @@ h1{
 
     #main--tilte_authorization {
         padding-left: 5vw;
+        padding-top: 6.2vw;
     }
 
     h1 {
-        margin-top: 8vw;
         font-size: 1.81vw;
-        margin-bottom: 1.3vw;
+        margin-bottom: 1.7vw;
     }
 
     #main--tilte_authorization>p {
@@ -266,7 +283,7 @@ h1{
         font-weight: 300;
         width: 35.49vw;
         line-height: 1.8vw;
-        margin-bottom: 2vw;
+        margin-bottom: 2.5vw;
     }
 
     #main--tilte_authorization--try_free {
@@ -314,7 +331,7 @@ h1{
         width: 6.77vw;
         height: 6.77vw;
         margin-top: 1vw;
-        margin-left: 52vw;
+        margin-left: 55vw;
         margin-bottom: -3.5vw;
     }
 
@@ -366,14 +383,33 @@ h1{
         margin-bottom: 0.6vw;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     #main--tilte_authorization {
         width: 87.75vw;
         padding-left: 3vw;
+        padding-top: 2vw;
         background-color: var(--background_color);
     }
 
     h1 {
-        margin-top: 4vw;
         color: var(--blue);
         font-size: 2.60vw;
         margin-bottom: 1.3vw;
@@ -421,13 +457,14 @@ h1{
     #main--tilte_authorization {
         width: 78.20vw;
         padding-left: 9vw;
+        padding-top: 4vw;
     }
 
     h1 {
-        margin-top: 7vw;
         color: var(--blue);
         font-size: 4.53vw;
         margin-bottom: 5.3vw;
+        width: 38vw;
     }
 
     #main--tilte_authorization>p {
@@ -456,8 +493,6 @@ h1{
         width: 100%;
         height: 90vw;
         background-position-y: -2vw;
-        border-bottom-left-radius: 10px;
-        border-bottom-right-radius: 10px;
     }
 
 
