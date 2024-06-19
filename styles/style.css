@@ -70,6 +70,12 @@ form>svg {
     cursor: pointer;
 }
 
+form>svg>rect{
+    width: 52px;
+    height: 52px;
+    fill: white;
+}
+
 form>svg:hover>path{
     stroke: red;
 }
