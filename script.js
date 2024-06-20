@@ -13,141 +13,67 @@ form_call.addEventListener('click', function(){
 })
 
 
-
 //функция для динамического формирования формы
 function createForm(){
-    const newForm = document.createElement('form');
-    form.appendChild(newForm);
-
-
-    // Создаем элемент SVG
-    let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-
-    svg.setAttribute("viewBox", "0 0 52 52");
-    svg.setAttribute("fill", "none");
-    svg.id = 'close_form';
-
-    // Создаем прямоугольник
-    let rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-    rect.setAttribute("width", "52");
-    rect.setAttribute("height", "52");
-    rect.setAttribute("rx", "10");
-    rect.setAttribute("fill", "white");
-    svg.appendChild(rect);
-
-    
-    // Создаем первый путь
-    let path1 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path1.setAttribute("d", "M32 20L20 32");
-    path1.setAttribute("stroke", "black");
-    path1.setAttribute("stroke-width", "2");
-    path1.setAttribute("stroke-linecap", "round");
-    path1.setAttribute("stroke-linejoin", "round");
-    svg.appendChild(path1);
-
-    // Создаем второй путь
-    let path2 = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path2.setAttribute("d", "M20 20L32 32");
-    path2.setAttribute("stroke", "black");
-    path2.setAttribute("stroke-width", "2");
-    path2.setAttribute("stroke-linecap", "round");
-    path2.setAttribute("stroke-linejoin", "round");
-    svg.appendChild(path2); 
-
-    // Добавляем SVG на страницу
-    newForm.appendChild(svg);
-
-    //находим кнопку для закрытия формы, назначаем слушатель события "клик"
-    let close_form = document.querySelector('#close_form');
-    close_form.addEventListener('click', function(){
-        overlay.classList.remove('modal--active');
-        form.removeChild(newForm);
-    })
-
-
-    const formTitle = document.createElement('p');
-    formTitle.textContent = 'Войти в систему';
-    newForm.appendChild(formTitle);
-
-    const mail_phone_input =  document.createElement('input');
-    mail_phone_input.setAttribute("type", "text");
-    mail_phone_input.setAttribute("name", "mail_phone");
-    mail_phone_input.setAttribute("placeholder", "Email/Телефон");
-    mail_phone_input.id = 'mail_phone';
-    mail_phone_input.classList.add('form_input');
-    newForm.appendChild(mail_phone_input);
-
-    const password =  document.createElement('input');
-    password.setAttribute("type", "password");
-    password.setAttribute("name", "password");
-    password.setAttribute("placeholder", "Пароль");
-    password.id = 'password';
-    password.classList.add('form_input');
-    newForm.appendChild(password);
-
-
-    // Создаем элемент label
-    const label = document.createElement("label");
-    label.setAttribute("id", "checkbox_remember");
-
-    // Создаем элемент input
-    const checkRemember = document.createElement("input");
-    checkRemember.setAttribute("type", "checkbox");
-    checkRemember.setAttribute("name", "remember");
-    checkRemember.setAttribute("id", "remember");
-    checkRemember.setAttribute("value", "remember");
-
-    // Создаем span для иконки
-    const spanIcon = document.createElement("span");
-    spanIcon.setAttribute("id", "checkbox_remember_icon");
-
-    // Создаем span для текста
-    const spanText = document.createElement("span");
-    spanText.textContent = "Запомнить пароль";
-
-    // Собираем элементы вместе
-    label.appendChild(checkRemember);
-    label.appendChild(spanIcon);
-    label.appendChild(spanText);
-
-    // Вставляем label в DOM
-    newForm.appendChild(label);
-
-    const formLink = document.createElement("a");
-    formLink.setAttribute("href", "#");
-    formLink.setAttribute("id", "recover_link");
-    formLink.textContent = 'Восстановить';
-    newForm.appendChild(formLink);
-
-    const button_enter = document.createElement("button");
-    button_enter.setAttribute("id", "button_enter");
-    button_enter.textContent = 'Войти';
-    newForm.appendChild(button_enter);
-
-    const button_registration = document.createElement("button");
-    button_registration.setAttribute("id", "button_registration");
-    button_registration.setAttribute("type", "button");
-    button_registration.textContent = 'Зарегестрироваься';
-    newForm.appendChild(button_registration);
-
-}
-
-
-//закрытие модального окна по клику вне его контентной области
-overlay.onmousedown = function (e) {
-    let target = e.target;
-    let modalContent = overlay.getElementsByClassName('main--form')[0];
-    if (e.target.closest('.' + modalContent.className) === null) {
-      this.classList.remove('modal--active');
-      tagBody.classList.remove('hidden');
+    if(document.querySelector('form')){
+        form.removeChild();
     }
-  };
+        const newForm = document.createElement('form');
+        newForm.setAttribute('method', 'post');
+        newForm.setAttribute('target', '_blank');
+        form.appendChild(newForm);
+        
+
+        newForm.innerHTML = `<svg id="close_form" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="52" height="52" rx="10" fill="white"/>
+                                <path d="M32 20L20 32" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M20 20L32 32" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <p>Войти в систему</p>
+                            <input class="form_input" type="text" name="mail_phone" placeholder="Email/Телефон" id="mail_phone" value="">
+                            <input class="form_input" type="password" name="password" id="password" placeholder="Пароль" value="">
+                                <label id="checkbox_remember">
+                                    <input type="checkbox" name="remember" id="remember" value="remember" >
+                                    <span id="checkbox_remember_icon"></span>
+                                    <span>Запомнить пароль</span>
+                                </label>
+                            <a href="#" id="recover_link">Восстановить</a>
+                            <button id="button_enter">Войти</button>
+                            <button id="button_registration" type="button">Зарегестрироваться</button>`;
+
+        if(document.querySelector(".main--form>form")){
+            
+            //валидация формы
+            
+            document.querySelector(".main--form>form").addEventListener("submit", validateEnterForm);
+            
+        }
+
+        if(document.querySelector('#mail_phone')){
+            //назначаем слушатель события для поля Логин при потере фокуса
+            document.querySelector('#mail_phone').addEventListener('blur', isLogin);
+        }
+
+        if(document.querySelector('#close_form')){
+            //находим кнопку для закрытия формы, назначаем слушатель события "клик"
+            let close_form = document.querySelector('#close_form');
+            close_form.addEventListener('click', function(){
+            overlay.classList.remove('modal--active');
+            form.removeChild(newForm);
+            })
+        }
 
 
-//валидация формы
-window.addEventListener("DOMContentLoaded", function(){
-    document.querySelector(".main--form>form").addEventListener("submit", validateEnterForm);
-});
+        //закрытие модального окна по клику вне его контентной области
+        overlay.onmousedown = function (e) {
+            let target = e.target;
+            let modalContent = overlay.getElementsByClassName('main--form')[0];
+            if (e.target.closest('.' + modalContent.className) === null) {
+                this.classList.remove('modal--active');
+                tagBody.classList.remove('hidden');
+            }
+        };
+    }
 
 function validateEnterForm(e){
     //убираем класс alert с элементов (если он был)
@@ -156,8 +82,6 @@ function validateEnterForm(e){
     const mail_phone = isEmpty(e.target.mail_phone);
     const password = isEmpty(e.target.password);
     const remember = e.target.remember.checked;
-    console.log(mail_phone)
-    console.log(password)
     //если хотя бы одно из полей пустое - останавливаем отправку формы
     if(mail_phone || password){
         e.preventDefault();
@@ -184,10 +108,8 @@ function validateEnterForm(e){
         }
         overlay.classList.remove('modal--active');
     }
-   
     //очищаем и скрываем форму
     document.querySelector('.main--form>form').reset();
-    
 };
 
 //проверяем не пустые ли поля
@@ -208,5 +130,3 @@ function isLogin(e){
     }
 }
 
-//назначаем слушатель события для поля Логин при потере фокуса
-document.querySelector('#mail_phone').addEventListener('blur', isLogin);
