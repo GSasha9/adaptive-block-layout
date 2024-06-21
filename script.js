@@ -71,6 +71,7 @@ function createForm(){
             if (e.target.closest('.' + modalContent.className) === null) {
                 this.classList.remove('modal--active');
                 tagBody.classList.remove('hidden');
+                form.removeChild(newForm);
             }
         };
     }
