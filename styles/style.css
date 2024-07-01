@@ -4,6 +4,14 @@
     --light-blue: #F0F4FC;
 }
 
+/* чтобы при автозаполнение не слетал фон инпута */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+     box-shadow: 0 0 0 3.70vw #D7E2F6 inset !important;
+}
+
 body{
     font-family: "Manrope", sans-serif;
     font-weight: 500;
@@ -24,8 +32,6 @@ main{
     border-radius: 10px;
     position: relative;
 }
-
-
 
 .modal{
     position: fixed;
@@ -104,7 +110,7 @@ form>p{
 }
 
 .form_input:focus::placeholder{
-    visibility: hidden;
+    opacity: 0;
 }
 
 .form_input:focus{
@@ -124,7 +130,6 @@ form>p{
     width: 12vw;
     position: relative;
 }
-
 
 #remember{
     display: none;
@@ -164,7 +169,6 @@ form>p{
     color: #330185;
 }
 
-
 form>button{
     width: 23.54vw;
     height: 3.39vw;
@@ -185,7 +189,6 @@ form>button{
     background-color: #13284e;
 }
 
-
 #button_registration{
     color: var(--blue);
     border: 1px var(--blue) solid;
@@ -194,7 +197,6 @@ form>button{
 #button_registration:hover{
     background-color: #D7E2F6;
 }
-
 
 #main--tilte_authorization{
     width: 48.44vw;
@@ -216,7 +218,6 @@ h1{
     width: 26.61vw;
     line-height: 1.4vw;
     margin-bottom: 2vw;
-    
 }
 
 #main--tilte_authorization--try_free{
@@ -262,10 +263,6 @@ h1{
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
-
-
-
-
 
 
 
@@ -390,25 +387,6 @@ h1{
         margin-bottom: 0.6vw;
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     #main--tilte_authorization {
         width: 87.75vw;
         padding-left: 3vw;
@@ -440,7 +418,6 @@ h1{
         gap: 4vw;
         margin-bottom: 5vw;
     }
-
 
     #main--tilte_authorization--try_free>span>svg{
         width: 4.69vw;
@@ -501,6 +478,4 @@ h1{
         height: 90vw;
         background-position-y: -2vw;
     }
-
-
 }

@@ -30,8 +30,8 @@ function createForm(){
                                 <path d="M20 20L32 32" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
                             <p>Войти в систему</p>
-                            <input class="form_input" type="text" name="mail_phone" placeholder="Email/Телефон" id="mail_phone" value="">
-                            <input class="form_input" type="password" name="password" id="password" placeholder="Пароль" value="">
+                            <input class="form_input" type="text" name="mail_phone" placeholder="Email/Телефон" id="mail_phone" value="" autocomplete>
+                            <input class="form_input" type="password" name="password" id="password" placeholder="Пароль" value="" minlength ="6" autocomplete>
                                 <label id="checkbox_remember">
                                     <input type="checkbox" name="remember" id="remember" value="remember" >
                                     <span id="checkbox_remember_icon"></span>
@@ -52,6 +52,13 @@ function createForm(){
         if(document.querySelector('#mail_phone')){
             //назначаем слушатель события для поля Логин при потере фокуса
             document.querySelector('#mail_phone').addEventListener('blur', isLogin);
+            //проверяем не ошибался ли пользователь при вводе логина, если да - убираем сообщение об ошибке
+            document.querySelector('#mail_phone').addEventListener('click', function(){
+                if(document.querySelector('#mail_phone').value == 'Введите email или номер телефона!' ){
+                    document.querySelector('#mail_phone').value ="";
+                    document.querySelector('#mail_phone').style.color = 'black';
+                }
+            });
         }
 
         if(document.querySelector('#close_form')){
@@ -70,7 +77,6 @@ function createForm(){
             let modalContent = overlay.getElementsByClassName('main--form')[0];
             if (e.target.closest('.' + modalContent.className) === null) {
                 this.classList.remove('modal--active');
-                tagBody.classList.remove('hidden');
                 form.removeChild(newForm);
             }
         };
@@ -113,6 +119,13 @@ function validateEnterForm(e){
     document.querySelector('.main--form>form').reset();
 };
 
+//полная валидация формы телефон-мейл
+function isTelEmail(field){
+    isEmpty(field);
+    let email = /[a-z]@[a-z]/gi.test(field);
+    console.log('проверочка');
+}
+
 //проверяем не пустые ли поля
 function isEmpty(field){
     if (field.value.trim() === ""){
@@ -125,9 +138,16 @@ function isEmpty(field){
 //проверяем поле "Логин". Ищем в localStorage логин и заполняем соответствующий пароль
 function isLogin(e){
     const mail_phone = e.target;
-    if(localStorage.getItem(mail_phone.value)){
-        let user = JSON.parse(localStorage.getItem(mail_phone.value));
-        document.querySelector('#password').value = user.password;
+    if(/[a-z]*@[a-z]*.[a-z]*/gi.test(mail_phone.value) || /\+\d{7}/gi.test(mail_phone.value)){
+        if(localStorage.getItem(mail_phone.value)){
+            let user = JSON.parse(localStorage.getItem(mail_phone.value));
+            document.querySelector('#password').value = user.password;
+        }
     }
+    else{
+        mail_phone.style.color = 'red';
+        mail_phone.value = "Введите email или номер телефона!";
+    }
+    
 }
 
